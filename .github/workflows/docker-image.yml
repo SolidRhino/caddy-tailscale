@@ -8,6 +8,10 @@ jobs:
     docker:
         runs-on: ubuntu-latest
         steps:
+
+            - name: Lowercase username
+              run: echo "LOWERCASE_USERNAME=${GITHUB_REPOSITORY_OWNER,,}" >>${GITHUB_ENV}
+
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v3
 
@@ -35,4 +39,4 @@ jobs:
                   push: true
                   tags: |
                       ${{ secrets.DOCKER_USERNAME }}/caddy-tailscale:latest
-                      ghcr.io/${{ github.repository_owner }}/caddy-tailscale:latest
+                      ghcr.io/${{ env.LOWERCASE_USERNAME }}/caddy-tailscale:latest
