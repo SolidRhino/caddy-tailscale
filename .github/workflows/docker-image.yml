@@ -35,13 +35,13 @@ jobs:
                   tags: |
                       ${{ secrets.DOCKER_USERNAME }}/caddy-tailscale:latest
             
-            - name: Login to GitHub Container Registry
-              uses: docker/login-action@v3
-              with:
-                registry: ghcr.io
-                username: ${{ github.actor }}
-                password: ${{ secrets.GITHUB_TOKEN }}
+            # - name: Login to GitHub Container Registry
+            #   uses: docker/login-action@v3
+            #   with:
+            #     registry: ghcr.io
+            #     username: ${{ github.actor }}
+            #     password: ${{ secrets.GITHUB_TOKEN }}
             
-            - name: Push image to GHCR
-              run: |
-                docker buildx imagetools create --tag ghcr.io/${{ env.LOWERCASE_USERNAME }}/caddy-tailscale:latest ${{ secrets.DOCKER_USERNAME }}/caddy-tailscale:latest
+            # - name: Push image to GHCR
+            #   run: |
+            #     docker buildx imagetools create --tag ghcr.io/${{ env.LOWERCASE_USERNAME }}/caddy-tailscale:latest ${{ secrets.DOCKER_USERNAME }}/caddy-tailscale:latest
