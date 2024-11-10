@@ -9,5 +9,5 @@ RUN xcaddy build \
     --with github.com/tailscale/caddy-tailscale@main \
     --output /usr/bin/caddy
 
-FROM cgr.dev/chainguard/caddy:latest
+FROM chainguard/caddy:latest
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
